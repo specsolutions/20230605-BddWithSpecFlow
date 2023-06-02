@@ -1,15 +1,11 @@
 ﻿@webapi
 Feature: Order Details
 
-Rule: Pizza should be ordered for today by default
-
 @login
-Scenario: Pizza is ordered without specifying delivery time
+Scenario: Pizza is ordered for today by default
 	Given the client has items in the basket
 	When the client checks the my order page
 	Then the order should indicate that the delivery date is today
-
-Rule: Pizza delivery time can be specified
 
 @login
 Scenario Outline: Pizza is ordered for different dates and times

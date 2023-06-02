@@ -5,7 +5,7 @@ Feature: My Order
 #Background: 
 #	Given the client is logged in
 
-Rule: The pizzas the client has put into the basket are listed on the My Order page
+#Rule: The pizzas the client has put into the basket are listed on the My Order page
 
 @login
 Scenario: Customer has a few different pizzas in the basket

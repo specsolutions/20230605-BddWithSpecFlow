@@ -19,7 +19,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _authContext = authContext;
         }
 
-        [Given("the client is logged in")]
+        [Given(@"the client is logged in")]
         public void GivenTheClientIsLoggedIn()
         {
             var defaultUserName = "Marvin";

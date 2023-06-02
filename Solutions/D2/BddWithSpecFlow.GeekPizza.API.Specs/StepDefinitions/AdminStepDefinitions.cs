@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using BddWithSpecFlow.GeekPizza.Specs.Support;
+using BddWithSpecFlow.GeekPizza.Web.Controllers;
+using BddWithSpecFlow.GeekPizza.Web.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BddWithSpecFlow.GeekPizza.Web.DataAccess;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
@@ -16,7 +20,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _currentObjectContext = currentObjectContext;
         }
 
-        [Given("the menu has been configured to contain {int} active and {int} inactive pizzas")]
+        [Given(@"the menu has been configured to contain (.*) active and (.*) inactive pizzas")]
         public void GivenTheMenuHasBeenConfiguredToContainActiveAndInactivePizzas(int activePizzaCount, int inactivePizzaCount)
         {
             // We ensure the preconditions by setting the menu records directly to the database (in a pretty verbose way).
@@ -46,7 +50,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             db.SaveChanges();
         }
 
-        [Given("the menu has been configured to contain the following pizzas")]
+        [Given(@"the menu has been configured to contain the following pizzas")]
         public void GivenTheMenuHasBeenConfiguredToContainTheFollowingPizzas(Table menuItemsTable)
         {
             var db = new DataContext();

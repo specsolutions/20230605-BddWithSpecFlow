@@ -14,7 +14,7 @@ namespace BddWithSpecFlow.GeekPizza.Web.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private readonly DataContext _db = new();
+        private readonly DataContext _db = new DataContext();
 
         // GET: api/admin/GetMenuItems -- returns all menu items
         [HttpGet]

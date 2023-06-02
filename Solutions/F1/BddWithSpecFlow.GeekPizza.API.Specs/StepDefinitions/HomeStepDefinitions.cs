@@ -20,19 +20,19 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _homeApiDriver = homeApiDriver;
         }
 
-        [When("the client checks the home page")]
+        [When(@"the client checks the home page")]
         public void WhenTheClientChecksTheHomePage()
         {
             _homePageModel = _homeApiDriver.GetHomePageModel();
         }
 
-        [Then("the home page main message should be: {string}")]
+        [Then(@"the home page main message should be: ""(.*)""")]
         public void ThenTheHomePageMainMessageShouldBe(string expectedMessage)
         {
             Assert.AreEqual(expectedMessage, _homePageModel.MainMessage);
         }
 
-        [Then("the user name of the client should be on the home page")]
+        [Then(@"the user name of the client should be on the home page")]
         public void ThenTheUserNameOfTheClientShouldBeOnTheHomePage()
         {
             Assert.AreEqual(_authContext.AssertLoggedInUser(), _homePageModel.UserName);

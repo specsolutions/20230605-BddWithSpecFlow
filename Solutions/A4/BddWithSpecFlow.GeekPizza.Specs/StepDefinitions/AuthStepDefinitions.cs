@@ -1,8 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using BddWithSpecFlow.GeekPizza.Web.Controllers;
 using BddWithSpecFlow.GeekPizza.Web.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using BddWithSpecFlow.GeekPizza.Web.DataAccess;
 using BddWithSpecFlow.GeekPizza.Specs.Support;
+using BddWithSpecFlow.GeekPizza.Web.Services;
+using Microsoft.AspNetCore.Mvc;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 
 namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
 {
@@ -16,7 +22,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _authContext = authContext;
         }
 
-        [Given("the client is logged in")]
+        [Given(@"the client is logged in")]
         public void GivenTheClientIsLoggedIn()
         {
             // The login process generates an authentication token that has to be passed in

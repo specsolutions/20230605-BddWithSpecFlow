@@ -16,20 +16,20 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _userApiDriver = userApiDriver;
         }
 
-        [Given("there is a user registered with user name {string} and password {string}")]
+        [Given(@"there is a user registered with user name '([^']*)' and password '([^']*)'")]
         public void GivenThereIsAUserRegisteredWithUserNameAndPassword(string userName, string password)
         {
             var result = _userApiDriver.AttemptRegister(userName, password, password);
             Assert.IsTrue(result, _userApiDriver.LastError);
         }
 
-        [When("the client attempts to register with user name {string} and password {string}")]
+        [When(@"the client attempts to register with user name ""([^""]*)"" and password ""([^""]*)""")]
         public void WhenTheClientAttemptsToRegisterWithUserNameAndPassword(string userName, string password)
         {
             _registerResult = _userApiDriver.AttemptRegister(userName, password, password);
         }
 
-        [Then("the registration should be successful")]
+        [Then(@"the registration should be successful")]
         public void ThenTheRegistrationShouldBeSuccessful()
         {
             Assert.IsTrue(_registerResult, _userApiDriver.LastError);

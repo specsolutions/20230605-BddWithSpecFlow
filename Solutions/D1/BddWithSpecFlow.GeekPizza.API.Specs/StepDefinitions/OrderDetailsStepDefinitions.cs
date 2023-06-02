@@ -15,20 +15,20 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _orderApiDriver = orderApiDriver;
         }
 
-        [When("the client specifies {DateTime} at {TimeSpan} as delivery time")]
-        public void WhenTheClientSpecifiesDateAtTimeAsDeliveryTime(DateTime deliveryDate, TimeSpan deliveryTime)
+        [When(@"the client specifies (.*) at (.*) as delivery time")]
+        public void WhenTheClientSpecifiesDateAtTimeAsDeliveryTime(DateTime deliveryDate, TimeSpan? deliveryTime)
         {
             _orderApiDriver.UpdateOrderDetails(deliveryDate, deliveryTime);
         }
 
-        [Then("the order should indicate that the delivery date is {DateTime}")]
+        [Then(@"the order should indicate that the delivery date is (.*)")]
         public void ThenTheOrderShouldIndicateThatTheDeliveryDateIsDate(DateTime expectedDate)
         {
             var myOrderResponse = _orderApiDriver.GetMyOrder();
             Assert.AreEqual(expectedDate, myOrderResponse.DeliveryDate.ToLocalTime());
         }
 
-        [Then("the delivery time should be {TimeSpan}")]
+        [Then(@"the delivery time should be (.*)")]
         public void ThenTheDeliveryTimeShouldBe(TimeSpan expectedTime)
         {
             var myOrderResponse = _orderApiDriver.GetMyOrder();

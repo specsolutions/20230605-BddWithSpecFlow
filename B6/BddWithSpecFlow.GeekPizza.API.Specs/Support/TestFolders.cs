@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
@@ -22,7 +21,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.Support
         }
 
         public string InputFolder => 
-            Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
 
         public string OutputFolder
         {
@@ -80,15 +79,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.Support
 
         public string GetScenarioSpecificFileName(string extension = "")
         {
-            var baseFileName = $"{ToPath(_featureContext.FeatureInfo.Title)}_{ToPath(_scenarioContext.ScenarioInfo.Title)}";
-            if (_scenarioContext.ScenarioInfo.Arguments != null && _scenarioContext.ScenarioInfo.Arguments.Count > 0)
-            {
-                foreach (DictionaryEntry entry in _scenarioContext.ScenarioInfo.Arguments)
-                {
-                    baseFileName += $"_{entry.Key}-{entry.Value}";
-                }
-            }
-            return baseFileName + extension;
+            return $"{ToPath(_featureContext.FeatureInfo.Title)}_{ToPath(_scenarioContext.ScenarioInfo.Title)}_{DateTime.Now.Ticks}" + extension;
         }
     }
 }

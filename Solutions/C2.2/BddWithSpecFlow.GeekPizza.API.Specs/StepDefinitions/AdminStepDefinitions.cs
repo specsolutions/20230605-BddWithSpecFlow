@@ -13,7 +13,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
     [Binding]
     public class AdminStepDefinitions
     {
-        [Given("the menu has been configured to contain {int} active and {int} inactive pizzas")]
+        [Given(@"the menu has been configured to contain (.*) active and (.*) inactive pizzas")]
         public void GivenTheMenuHasBeenConfiguredToContainActiveAndInactivePizzas(int activePizzaCount, int inactivePizzaCount)
         {
             // We ensure the preconditions by setting the menu records directly to the database (in a pretty verbose way).
@@ -43,7 +43,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             db.SaveChanges();
         }
 
-        [Given("the menu has been configured to contain the following pizzas")]
+        [Given(@"the menu has been configured to contain the following pizzas")]
         public void GivenTheMenuHasBeenConfiguredToContainTheFollowingPizzas(Table menuItemsTable)
         {
             var db = new DataContext();

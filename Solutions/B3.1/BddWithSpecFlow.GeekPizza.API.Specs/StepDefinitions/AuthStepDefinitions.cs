@@ -19,8 +19,8 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _authContext = authContext;
         }
 
-        [Given("the client is logged in")]
-        [BeforeScenario("@login", Order = 200)]
+        [Given(@"the client is logged in")]
+        [BeforeScenario("login", Order = 200)]
         public void GivenTheClientIsLoggedIn()
         {
             // prepare JSON payload data
@@ -34,7 +34,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _authContext.LoggedInUserName = DomainDefaults.UserName;
         }
 
-        [Given("the client is logged in with user name {string} and password {string}")]
+        [Given(@"the client is logged in with user name '([^']*)' and password '([^']*)'")]
         public void GivenTheClientIsLoggedInWithUserNameAndPassword(string userName, string password)
         {
             //TODO: the code duplication will be eliminated in a later exercise

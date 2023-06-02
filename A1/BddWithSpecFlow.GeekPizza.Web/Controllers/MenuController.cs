@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using BddWithSpecFlow.GeekPizza.Web.DataAccess;
@@ -15,7 +16,7 @@ namespace BddWithSpecFlow.GeekPizza.Web.Controllers
     [ApiController]
     public class MenuController : ControllerBase
     {
-        private readonly DataContext _db = new();
+        private readonly DataContext _db = new DataContext();
 
         // GET: api/menu -- returns menu items visible/available to users
         [HttpGet]

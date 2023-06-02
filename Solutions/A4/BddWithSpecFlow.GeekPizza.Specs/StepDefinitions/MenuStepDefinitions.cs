@@ -12,20 +12,20 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
     {
         private PizzaMenuModel _menuModel;
 
-        [When("the client checks the menu page")]
+        [When(@"the client checks the menu page")]
         public void WhenTheClientChecksTheMenuPage()
         {
             var controller = new MenuController();
             _menuModel = controller.GetPizzaMenu();
         }
 
-        [Then("there should be {int} pizzas listed")]
+        [Then(@"there should be (.*) pizzas listed")]
         public void ThenThereShouldBePizzasListed(int expectedCount)
         {
             Assert.AreEqual(expectedCount, _menuModel.Items.Count);
         }
 
-        [Then("the following pizzas should be listed in this order")]
+        [Then(@"the following pizzas should be listed in this order")]
         public void ThenTheFollowingPizzasShouldBeListedInThisOrder(Table expectedMenuItemsTable)
         {
             // The CompereToSet helper method (from TechTalk.SpecFlow.Assist namespace)
@@ -33,7 +33,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             // with the property names. The manual for-loop implementation is replaced by that.
             expectedMenuItemsTable.CompareToSet(_menuModel.Items, sequentialEquality: true);
 
-            // Assert.AreEqual(expectedMenuItemsTable.RowCount, _menuModel.Items.Count);
+            // Assert.AreEqual(expectedMenuItemsTable.RowCount, _menuItems.Count);
             // for (int i = 0; i < expectedMenuItemsTable.RowCount; i++)
             // {
             //     if (expectedMenuItemsTable.ContainsColumn("name"))

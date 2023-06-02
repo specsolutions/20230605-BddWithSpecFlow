@@ -43,9 +43,21 @@ namespace BddWithSpecFlow.GeekPizza.Specs.Support
         [StepArgumentTransformation(@"(\d+)(am|pm)")]
         public TimeSpan ConvertTimeSpanAmPm(int hours, string ampm)
         {
-            if (ampm == "pm" && hours < 12) hours += 12;
-            if (ampm == "am" && hours == 12) hours -= 12;
+            if (ampm == "pm" && hours < 12) hours = hours + 12;
+            if (ampm == "am" && hours == 12) hours = hours - 12;
             return new TimeSpan(hours, 0, 0);
+        }
+
+        [StepArgumentTransformation(@"(?!earliest)(.*)")]
+        public TimeSpan? ConvertTimeToOptional(TimeSpan timeSpan)
+        {
+            return timeSpan;
+        }
+
+        [StepArgumentTransformation(@"earliest")]
+        public TimeSpan? ConvertDefaultTime()
+        {
+            return null;
         }
     }
 }

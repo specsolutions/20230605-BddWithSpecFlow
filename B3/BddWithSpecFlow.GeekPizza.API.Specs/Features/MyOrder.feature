@@ -1,7 +1,7 @@
 ﻿@webapi
 Feature: My Order
 
-Rule: The pizzas the client has put into the basket are listed on the My Order page
+#Rule: The pizzas the client has put into the basket are listed on the My Order page
 
 Scenario: Customer has a few different pizzas in the basket
 	Given the menu has been configured to contain the following pizzas

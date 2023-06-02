@@ -19,7 +19,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _authContext = authContext;
         }
 
-        [Given("the client is logged in")]
+        [Given(@"the client is logged in")]
         public void GivenTheClientIsLoggedIn()
         {
             var defaultUserName = "Marvin";
@@ -35,7 +35,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _authContext.LoggedInUserName = defaultUserName;
         }
 
-        [Given("the client is logged in with user name {string} and password {string}")]
+        [Given(@"the client is logged in with user name '([^']*)' and password '([^']*)'")]
         public void GivenTheClientIsLoggedInWithUserNameAndPassword(string userName, string password)
         {
             //TODO: the code duplication will be eliminated in a later exercise

@@ -15,7 +15,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.Support
             _webApiContext = webApiContext;
         }
 
-        [BeforeScenario("@webapi")]
+        [BeforeScenario("webapi")]
         public void StartApplication()
         {
             // start application
@@ -25,7 +25,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.Support
             _webApiContext.HttpClient = _webApiContext.WebApplicationFactory.CreateClient();
         }
 
-        [AfterScenario("@webapi")]
+        [AfterScenario("webapi")]
         public void StopApplication()
         {
             // dispose HttpClient

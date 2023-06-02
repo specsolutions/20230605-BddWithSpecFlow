@@ -1,9 +1,7 @@
 ﻿@webapi @interface
 Feature: Web API for Menu
 
-Rule: Menu items can be retrieved by ID
-
-Scenario: A menu item is retrieved by ID
+Scenario: Menu items can be retrieved by ID
 	Given the menu has been configured to contain the following pizzas
 		| # | name       | ingredients                                     | calories |
 		| 1 | Margherita | tomato slices, oregano, mozzarella              | 1920     |

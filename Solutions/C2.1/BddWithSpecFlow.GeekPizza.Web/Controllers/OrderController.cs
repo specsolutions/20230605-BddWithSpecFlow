@@ -15,7 +15,7 @@ namespace BddWithSpecFlow.GeekPizza.Web.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
-        private readonly PriceCalculatorService _priceCalculatorService = new();
+        private readonly PriceCalculatorService _priceCalculatorService = new PriceCalculatorService();
 
         // GET: api/order -- get my order (always exists, but might be empty)
         public Order GetMyOrder(string token = null)

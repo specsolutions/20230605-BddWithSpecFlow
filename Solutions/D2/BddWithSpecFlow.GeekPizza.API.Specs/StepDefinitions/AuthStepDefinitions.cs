@@ -21,8 +21,8 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _orderApiDriver = orderApiDriver;
         }
 
-        [Given("the client is logged in")]
-        [BeforeScenario("@login", Order = 200)]
+        [Given(@"the client is logged in")]
+        [BeforeScenario("login", Order = 200)]
         public void GivenTheClientIsLoggedIn()
         {
             var result = _authApiDriver.AttemptLogin(DomainDefaults.UserName, DomainDefaults.UserPassword);
@@ -30,7 +30,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _authContext.LoggedInUserName = DomainDefaults.UserName;
         }
 
-        [Given("the client is logged in with user name {string} and password {string}")]
+        [Given(@"the client is logged in with user name '([^']*)' and password '([^']*)'")]
         public void GivenTheClientIsLoggedInWithUserNameAndPassword(string userName, string password)
         {
             var result = _authApiDriver.AttemptLogin(userName, password);
@@ -38,19 +38,19 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _authContext.LoggedInUserName = userName;
         }
 
-        [When("the client attempts to log in with user name {string} and password {string}")]
+        [When(@"the client attempts to log in with user name ""([^""]*)"" and password ""([^""]*)""")]
         public void WhenTheClientAttemptsToLogInWithUserNameAndPassword(string userName, string password)
         {
             _loginResult = _authApiDriver.AttemptLogin(userName, password);
         }
 
-        [Then("the login attempt should be successful")]
+        [Then(@"the login attempt should be successful")]
         public void ThenTheLoginAttemptShouldBeSuccessful()
         {
             Assert.IsTrue(_loginResult, _authApiDriver.LastError);
         }
 
-        [Then("the client should be able to access member-only services")]
+        [Then(@"the client should be able to access member-only services")]
         public void ThenTheClientShouldBeAbleToAccessMember_OnlyServices()
         {
             // we use the "my order" api as an example of a member-only service

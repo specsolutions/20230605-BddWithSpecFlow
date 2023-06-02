@@ -17,7 +17,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _webApiContext = webApiContext;
         }
 
-        [Given("the client is logged in")]
+        [Given(@"the client is logged in")]
         public void GivenTheClientIsLoggedIn()
         {
             // prepare JSON payload data

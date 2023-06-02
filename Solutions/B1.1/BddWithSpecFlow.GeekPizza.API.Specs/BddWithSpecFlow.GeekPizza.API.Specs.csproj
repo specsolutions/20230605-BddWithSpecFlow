@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <IsPackable>false</IsPackable>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>8</LangVersion>
     <RootNamespace>BddWithSpecFlow.GeekPizza.Specs</RootNamespace>
   </PropertyGroup>
 
@@ -32,7 +32,7 @@
 
 	  <!-- CucumberExpressions support for SpecFlow -->
 	  <PackageReference Include="SpecFlow" Version="3.9.22" />
-	  <PackageReference Include="CucumberExpressions.SpecFlow.3-9" Version="1.0.7" />
+	  <PackageReference Include="CucumberExpressions.SpecFlow.3-9" Version="1.0.6" />
 
 	  <!-- SpecFlow+ LivingDoc -->
     <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.42" />

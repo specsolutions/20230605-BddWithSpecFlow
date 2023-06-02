@@ -19,7 +19,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
 
         private HomePageModel _homePageModel;
 
-        [BeforeScenario("@webapi")]
+        [BeforeScenario("webapi")]
         public void StartApplication()
         {
             // start application
@@ -29,7 +29,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _httpClient = _webApplicationFactory.CreateClient();
         }
 
-        [AfterScenario("@webapi")]
+        [AfterScenario("webapi")]
         public void StopApplication()
         {
             // dispose HttpClient
@@ -39,7 +39,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _webApplicationFactory.Dispose();
         }
 
-        [Given("the client is logged in")]
+        [Given(@"the client is logged in")]
         public void GivenTheClientIsLoggedIn()
         {
             // prepare JSON payload data
@@ -56,7 +56,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
 
-        [When("the client checks the home page")]
+        [When(@"the client checks the home page")]
         public void WhenTheClientChecksTheHomePage()
         {
             // execute request
@@ -77,7 +77,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _homePageModel = data;
         }
 
-        [Then("the user name of the client should be on the home page")]
+        [Then(@"the user name of the client should be on the home page")]
         public void ThenTheUserNameOfTheClientShouldBeOnTheHomePage()
         {
             Assert.AreEqual("Marvin", _homePageModel.UserName);

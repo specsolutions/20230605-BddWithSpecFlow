@@ -25,7 +25,7 @@ namespace BddWithSpecFlow.GeekPizza.Web
         {
             public override TimeSpan Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
-                return TimeSpan.Parse(reader.GetString()!);
+                return TimeSpan.Parse(reader.GetString());
             }
 
             public override void Write(Utf8JsonWriter writer, TimeSpan value, JsonSerializerOptions options)
@@ -52,9 +52,10 @@ namespace BddWithSpecFlow.GeekPizza.Web
 
             services.AddMvc(options =>
             {
-                options.EnableEndpointRouting = false;
-                options.Filters.Add(new HttpResponseExceptionFilter());
-            });
+                    options.EnableEndpointRouting = false;
+                    options.Filters.Add(new HttpResponseExceptionFilter());
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Latest);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

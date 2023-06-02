@@ -2,6 +2,7 @@
 using System.Net;
 using BddWithSpecFlow.GeekPizza.Specs.Support;
 using BddWithSpecFlow.GeekPizza.Web.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BddWithSpecFlow.GeekPizza.Specs.Drivers
 {
@@ -18,9 +19,6 @@ namespace BddWithSpecFlow.GeekPizza.Specs.Drivers
             _webApiContext = webApiContext;
         }
 
-        // In a real project the return value of "AttemptLogin" would not just be a simple "bool"
-        // but a structure that can hold information about unsuccessful login. 
-        // In this project the "LastError" property can be queried for error details.
         public bool AttemptLogin(string userName, string password)
         {
             var data = new LoginInputModel { Name = userName, Password = password };

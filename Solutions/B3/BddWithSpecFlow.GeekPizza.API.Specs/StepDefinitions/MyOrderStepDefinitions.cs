@@ -22,7 +22,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _webApiContext = webApiContext;
         }
 
-        [Given("the client has the following items in the basket")]
+        [Given(@"the client has the following items in the basket")]
         public void GivenTheClientHasTheFollowingItemsInTheBasket(Table orderItemsTable)
         {
             foreach (var orderItemRow in orderItemsTable.Rows)
@@ -43,19 +43,19 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _orderedItems = orderItemsTable;
         }
 
-        [When("the client checks the my order page")]
+        [When(@"the client checks the my order page")]
         public void WhenTheClientChecksTheMyOrderPage()
         {
             _myOrderResponse = _webApiContext.ExecuteGet<Order>("api/order");
         }
 
-        [Then("the following items should be listed on the my order page")]
+        [Then(@"the following items should be listed on the my order page")]
         public void ThenTheFollowingItemsShouldBeListedOnTheMyOrderPage(Table expectedOrderItemsTable)
         {
             expectedOrderItemsTable.CompareToSet(_myOrderResponse.OrderItems);
         }
 
-        [Then("the ordered items should be listed on the my order page")]
+        [Then(@"the ordered items should be listed on the my order page")]
         public void ThenTheOrderedItemsShouldBeListedOnTheMyOrderPage()
         {
             _orderedItems.CompareToSet(_myOrderResponse.OrderItems);

@@ -26,7 +26,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             return myOrderResponse.Prices;
         }
 
-        [Given("the client has items in the basket with subtotal of ${decimal}")]
+        [Given(@"the client has items in the basket with subtotal of \$(.*)")]
         public void GivenTheClientHasItemsInTheBasketWithSubtotalOf(decimal subtotal)
         {
             var price = LoadCurrentPrice();
@@ -46,19 +46,20 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _orderPrice = LoadCurrentPrice();
         }
 
-        [Then("the subtotal should be ${decimal}")]
+        [Then(@"the subtotal should be \$(.*)")]
+        //[Then("the subtotal should be ${int}")]
         public void ThenTheSubtotalShouldBe(decimal expectedSubtotal)
         {
             Assert.AreEqual(expectedSubtotal, _orderPrice.Subtotal);
         }
 
-        [Then("the delivery costs should be ${decimal}")]
+        [Then(@"the delivery costs should be \$(.*)")]
         public void ThenTheDeliveryCostsShouldBe(decimal expectedDeliveryCosts)
         {
             Assert.AreEqual(expectedDeliveryCosts, _orderPrice.DeliveryCosts);
         }
 
-        [Then("the total should be ${decimal}")]
+        [Then(@"the total should be \$(.*)")]
         public void ThenTheTotalShouldBe(decimal expectedTotal)
         {
             Assert.AreEqual(expectedTotal, _orderPrice.Total);

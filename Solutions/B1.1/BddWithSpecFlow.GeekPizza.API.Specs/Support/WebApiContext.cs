@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using BddWithSpecFlow.GeekPizza.Web;
-using BddWithSpecFlow.GeekPizza.Web.Utils;
+using BddWithSpecFlow.GeekPizza.Web.Models;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
 namespace BddWithSpecFlow.GeekPizza.Specs.Support
@@ -43,12 +45,8 @@ namespace BddWithSpecFlow.GeekPizza.Specs.Support
 
         private void SanityCheck(HttpResponseMessage response, int upperRange = 300)
         {
-            if ((int)response.StatusCode < 200 || (int)response.StatusCode >= upperRange)
-            {
-                var responseMessage = GetResponseError(response);
-                throw new HttpResponseException(response.StatusCode, responseMessage,
-                    $"The Web API request should be completed with success, not with error '{responseMessage}'");
-            }
+            Assert.IsTrue((int) response.StatusCode >= 200 && (int) response.StatusCode < upperRange,
+                $"the Web API request should be completed with success, not with error '{GetResponseError(response)}'");
         }
 
         private string GetResponseError(HttpResponseMessage response)

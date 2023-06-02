@@ -1,6 +1,6 @@
 ﻿Feature: Home
 
-Rule: A positive message should be shown on the home page
+#Rule: A positive message should be shown on the home page
 
 Scenario: Welcome message is shown on home page
 	When the client checks the home page

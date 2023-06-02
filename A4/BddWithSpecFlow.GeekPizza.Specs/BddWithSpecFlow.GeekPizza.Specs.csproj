@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <IsPackable>false</IsPackable>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +17,7 @@
 
     <!-- CucumberExpressions support for SpecFlow -->
     <PackageReference Include="SpecFlow" Version="3.9.22" />
-    <PackageReference Include="CucumberExpressions.SpecFlow.3-9" Version="1.0.7" />
+    <PackageReference Include="CucumberExpressions.SpecFlow.3-9" Version="1.0.6" />
 
     <!-- testing utilities -->
     <PackageReference Include="FluentAssertions" Version="5.10.3" />

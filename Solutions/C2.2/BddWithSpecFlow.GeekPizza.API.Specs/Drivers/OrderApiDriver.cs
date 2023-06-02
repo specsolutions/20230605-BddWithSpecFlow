@@ -3,6 +3,7 @@ using System.Net;
 using BddWithSpecFlow.GeekPizza.Specs.Support;
 using BddWithSpecFlow.GeekPizza.Web.DataAccess;
 using BddWithSpecFlow.GeekPizza.Web.Models;
+using BddWithSpecFlow.GeekPizza.Web.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BddWithSpecFlow.GeekPizza.Specs.Drivers
@@ -45,12 +46,12 @@ namespace BddWithSpecFlow.GeekPizza.Specs.Drivers
             Assert.IsTrue(response, LastError);
         }
 
-        public void UpdateOrderDetails(DateTime deliveryDate, TimeSpan deliveryTime)
+        public void UpdateOrderDetails(DateTime deliveryDate, TimeSpan? deliveryTime)
         {
             var orderChange = new Order
             {
                 DeliveryDate = deliveryDate,
-                DeliveryTime = deliveryTime
+                DeliveryTime = deliveryTime ?? TimeSpan.Zero
             };
             _lastResponse = _webApiContext.ExecutePut("/api/order", orderChange);
             Assert.AreEqual(HttpStatusCode.OK, _lastResponse.StatusCode, _lastResponse.ResponseMessage);

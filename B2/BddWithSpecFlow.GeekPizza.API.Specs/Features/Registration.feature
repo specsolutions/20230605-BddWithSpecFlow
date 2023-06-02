@@ -7,7 +7,7 @@ There are many rules involved (e.g. related to user name and password validity
 or password and re-entered password match). For the sake of the course we only
 work with a single rule: Should be able to register with user name and password.
 
-Rule: Should be able to register with user name and password
+#Rule: Should be able to register with user name and password
 
 Scenario: Customer registers successfully
 	#TODO: make a POST request to /api/user. The JSON payload is represented with the RegisterInputModel class

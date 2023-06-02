@@ -17,7 +17,7 @@ namespace BddWithSpecFlow.GeekPizza.Web.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly DataContext _db = new();
+        private readonly DataContext _db = new DataContext();
 
         // POST /api/user -- registers a user
         [HttpPost]

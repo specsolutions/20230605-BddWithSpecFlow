@@ -18,7 +18,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _webApiContext = webApiContext;
         }
 
-        [Given("there is a user registered with user name {string} and password {string}")]
+        [Given(@"there is a user registered with user name '([^']*)' and password '([^']*)'")]
         public void GivenThereIsAUserRegisteredWithUserNameAndPassword(string userName, string password)
         {
             //TODO: the code duplication will be eliminated in a later exercise
@@ -33,7 +33,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
 
-        [When("the client attempts to register with user name {string} and password {string}")]
+        [When(@"the client attempts to register with user name ""([^""]*)"" and password ""([^""]*)""")]
         public void WhenTheClientAttemptsToRegisterWithUserNameAndPassword(string userName, string password)
         {
             // prepare JSON payload data
@@ -43,7 +43,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _registerResult = _webApiContext.ExecutePost("/api/user", data);
         }
 
-        [Then("the registration should be successful")]
+        [Then(@"the registration should be successful")]
         public void ThenTheRegistrationShouldBeSuccessful()
         {
             // functional check

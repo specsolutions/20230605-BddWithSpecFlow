@@ -1,5 +1,6 @@
 using System;
 using BddWithSpecFlow.GeekPizza.Specs.Drivers;
+using BddWithSpecFlow.GeekPizza.Specs.Support;
 using BddWithSpecFlow.GeekPizza.Web.DataAccess;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
@@ -10,22 +11,26 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
     [Binding]
     public class WebApiStepDefinitions
     {
+        private readonly CurrentObjectContext _currentObjectContext;
         private readonly MenuApiDriver _menuApiDriver;
 
         private PizzaMenuItem _retrievedMenuItem;
 
-        public WebApiStepDefinitions(MenuApiDriver menuApiDriver)
+        public WebApiStepDefinitions(CurrentObjectContext currentObjectContext, MenuApiDriver menuApiDriver)
         {
+            _currentObjectContext = currentObjectContext;
             _menuApiDriver = menuApiDriver;
         }
 
-        [When("the {PizzaMenuItem} is retrieved from the menu API resource by ID")]
-        public void WhenTheMenuItemIsRetrievedFromTheMenuApiResourceById(PizzaMenuItem menuItem)
+        [When(@"the menu item \#(.*) is retrieved from the menu API resource by ID")]
+        public void WhenTheMenuItemIsRetrievedFromTheMenuApiResourceById(int testId)
         {
+            var menuItem = _currentObjectContext.MenuItems[testId];
+            Assert.IsNotNull(menuItem);
             _retrievedMenuItem = _menuApiDriver.GetPizzaMenuItem(menuItem.Id);
         }
 
-        [Then("the retrieved menu item should contain")]
+        [Then(@"the retrieved menu item should contain")]
         public void ThenTheRetrievedMenuItemShouldContain(Table expectedMenuItemTable)
         {
             Assert.IsNotNull(_retrievedMenuItem);

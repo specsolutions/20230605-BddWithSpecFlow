@@ -18,7 +18,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _webApiContext = webApiContext;
         }
 
-        [When("the client attempts to register with user name {string} and password {string}")]
+        [When(@"the client attempts to register with user name ""([^""]*)"" and password ""([^""]*)""")]
         public void WhenTheClientAttemptsToRegisterWithUserNameAndPassword(string userName, string password)
         {
             // prepare JSON payload data
@@ -28,7 +28,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _registerResult = _webApiContext.ExecutePost("/api/user", data);
         }
 
-        [Then("the registration should be successful")]
+        [Then(@"the registration should be successful")]
         public void ThenTheRegistrationShouldBeSuccessful()
         {
             // functional check

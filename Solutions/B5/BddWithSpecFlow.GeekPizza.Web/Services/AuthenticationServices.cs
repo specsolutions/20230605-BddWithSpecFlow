@@ -8,7 +8,7 @@ namespace BddWithSpecFlow.GeekPizza.Web.Services
 {
     public static class AuthenticationServices
     {
-        private static readonly ConcurrentDictionary<string, string> LoggedInUsersByToken = new();
+        private static readonly ConcurrentDictionary<string, string> LoggedInUsersByToken = new ConcurrentDictionary<string, string>();
 
         public static string SetCurrentUser(string userName)
         {

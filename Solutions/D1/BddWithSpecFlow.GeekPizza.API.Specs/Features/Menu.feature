@@ -1,6 +1,6 @@
 ﻿Feature: Menu
 
-Rule: Inactive pizzas should not be listed
+#Rule: Inactive pizzas should not be listed
 
 @webapi
 Scenario: Only active pizza menu items are listed on the menu page
@@ -8,7 +8,7 @@ Scenario: Only active pizza menu items are listed on the menu page
 	When the client checks the menu page
 	Then there should be 5 pizzas listed
 
-Rule: Pizzas on menu should be listed alphabetically by name
+#Rule: Pizzas on menu should be listed alphabetically by name
 
 Scenario: The pizzas are listed in alphabetically on the menu page
 	Given the menu has been configured to contain the following pizzas

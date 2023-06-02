@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BddWithSpecFlow.GeekPizza.Web.DataAccess;
 using TechTalk.SpecFlow;
@@ -8,7 +9,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.Support
 {
     public class CurrentObjectContext
     {
-        public Dictionary<int, PizzaMenuItem> MenuItems { get; } = new();
+        public Dictionary<int, PizzaMenuItem> MenuItems { get; } = new Dictionary<int, PizzaMenuItem>();
 
         public void Map(IList<PizzaMenuItem> menuItems, Table tableWithTestId)
         {

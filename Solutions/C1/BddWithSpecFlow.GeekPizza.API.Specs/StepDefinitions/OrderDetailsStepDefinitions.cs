@@ -17,13 +17,13 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             _webApiContext = webApiContext;
         }
 
-        [When("the client specifies {DateTime} at {TimeSpan} as delivery time")]
-        public void WhenTheClientSpecifiesDateAtTimeAsDeliveryTime(DateTime deliveryDate, TimeSpan deliveryTime)
+        [When(@"the client specifies (.*) at (.*) as delivery time")]
+        public void WhenTheClientSpecifiesDateAtTimeAsDeliveryTime(DateTime deliveryDate, TimeSpan? deliveryTime)
         {
             var orderChange = new Order
             {
                 DeliveryDate = deliveryDate,
-                DeliveryTime = deliveryTime
+                DeliveryTime = deliveryTime ?? TimeSpan.Zero
             };
             // execute request
             var response = _webApiContext.ExecutePut("/api/order", orderChange);
@@ -31,14 +31,14 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode, response.ResponseMessage);
         }
 
-        [Then("the order should indicate that the delivery date is {DateTime}")]
+        [Then(@"the order should indicate that the delivery date is (.*)")]
         public void ThenTheOrderShouldIndicateThatTheDeliveryDateIsDate(DateTime expectedDate)
         {
             var myOrderResponse = _webApiContext.ExecuteGet<Order>("api/order");
             Assert.AreEqual(expectedDate, myOrderResponse.DeliveryDate.ToLocalTime());
         }
 
-        [Then("the delivery time should be {TimeSpan}")]
+        [Then(@"the delivery time should be (.*)")]
         public void ThenTheDeliveryTimeShouldBe(TimeSpan expectedTime)
         {
             var myOrderResponse = _webApiContext.ExecuteGet<Order>("api/order");

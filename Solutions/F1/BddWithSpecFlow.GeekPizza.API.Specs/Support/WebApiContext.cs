@@ -2,7 +2,7 @@
 using System.IO;
 using System.Net.Http;
 using System.Text;
-using BddWithSpecFlow.GeekPizza.Web.Utils;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
 namespace BddWithSpecFlow.GeekPizza.Specs.Support
@@ -10,7 +10,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.Support
     public class WebApiContext : IDisposable
     {
         private readonly AppHostingContext _appHostingContext;
-        private readonly StringBuilder _log = new();
+        private readonly StringBuilder _log = new StringBuilder();
 
         private HttpClient _httpClient;
 
@@ -99,12 +99,8 @@ namespace BddWithSpecFlow.GeekPizza.Specs.Support
 
         private void SanityCheck(HttpResponseMessage response, int upperRange = 300)
         {
-            if ((int)response.StatusCode < 200 || (int)response.StatusCode >= upperRange)
-            {
-                var responseMessage = GetResponseMessage(response);
-                throw new HttpResponseException(response.StatusCode, responseMessage,
-                    $"The Web API request should be completed with success, not with error '{responseMessage}'");
-            }
+            Assert.IsTrue((int) response.StatusCode >= 200 && (int) response.StatusCode < upperRange,
+                $"the Web API request should be completed with success, not with error '{GetResponseMessage(response)}'");
         }
 
         private string GetResponseMessage(HttpResponseMessage response)
@@ -118,9 +114,9 @@ namespace BddWithSpecFlow.GeekPizza.Specs.Support
 
         private void LogResponse(HttpResponseMessage response, string content = null)
         {
-            _log.AppendLine(response.RequestMessage?.RequestUri?.ToString() ?? "Unknown request URI");
+            _log.AppendLine(response.RequestMessage.RequestUri.ToString());
             _log.AppendLine($"{response.StatusCode}: {response.ReasonPhrase}");
-            content ??= ReadContent(response);
+            content = content ?? ReadContent(response);
             if (content != null)
                 _log.AppendLine(content);
             _log.AppendLine();

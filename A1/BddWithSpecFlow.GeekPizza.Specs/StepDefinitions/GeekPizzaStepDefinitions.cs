@@ -13,7 +13,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
     {
         private HomePageModel _homePageModel;
 
-        [Given("the menu has been configured to contain {int} active and {int} inactive pizzas")]
+        [Given(@"the menu has been configured to contain (.*) active and (.*) inactive pizzas")]
         public void GivenTheMenuHasBeenConfiguredToContainActiveAndInactivePizzas(int activePizzaCount, int inactivePizzaCount)
         {
             // We ensure the preconditions by setting the menu records directly to the database (in a pretty verbose way).
@@ -51,14 +51,14 @@ namespace BddWithSpecFlow.GeekPizza.Specs.StepDefinitions
             db.SaveChanges();
         }
 
-        [When("the client checks the home page")]
+        [When(@"the client checks the home page")]
         public void WhenTheClientChecksTheHomePage()
         {
             var controller = new HomeController();
             _homePageModel = controller.GetHomePageModel();
         }
 
-        [Then("the home page main message should be: {string}")]
+        [Then(@"the home page main message should be: ""(.*)""")]
         public void ThenTheHomePageMainMessageShouldBe(string expectedMessage)
         {
             Assert.AreEqual(expectedMessage, _homePageModel.MainMessage);

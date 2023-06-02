@@ -2,6 +2,7 @@
 using System.Net;
 using BddWithSpecFlow.GeekPizza.Specs.Support;
 using BddWithSpecFlow.GeekPizza.Web.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BddWithSpecFlow.GeekPizza.Specs.Drivers
 {

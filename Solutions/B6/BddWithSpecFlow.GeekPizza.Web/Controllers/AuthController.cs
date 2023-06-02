@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Net;
+using System.Net.Http;
 using BddWithSpecFlow.GeekPizza.Web.DataAccess;
 using BddWithSpecFlow.GeekPizza.Web.Models;
 using BddWithSpecFlow.GeekPizza.Web.Services;
 using BddWithSpecFlow.GeekPizza.Web.Utils;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BddWithSpecFlow.GeekPizza.Web.Controllers

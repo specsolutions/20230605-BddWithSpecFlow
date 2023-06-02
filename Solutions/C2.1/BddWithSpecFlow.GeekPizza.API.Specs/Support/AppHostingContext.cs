@@ -5,6 +5,7 @@ using FluentAssertions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Logging;
+using TechTalk.SpecFlow;
 
 namespace BddWithSpecFlow.GeekPizza.Specs.Support
 {
@@ -15,7 +16,7 @@ namespace BddWithSpecFlow.GeekPizza.Specs.Support
             protected override void ConfigureWebHost(IWebHostBuilder builder)
             {
                 base.ConfigureWebHost(builder);
-                builder.ConfigureLogging((_, loggingBuilder) =>
+                builder.ConfigureLogging((context, loggingBuilder) =>
                 {
                     loggingBuilder.ClearProviders();
                     loggingBuilder.AddDebug();

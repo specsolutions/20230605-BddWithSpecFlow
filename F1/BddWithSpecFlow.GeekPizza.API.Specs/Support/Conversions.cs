@@ -1,6 +1,4 @@
 ﻿using System;
-using BddWithSpecFlow.GeekPizza.Web.DataAccess;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
 
 namespace BddWithSpecFlow.GeekPizza.Specs.Support
@@ -8,13 +6,6 @@ namespace BddWithSpecFlow.GeekPizza.Specs.Support
     [Binding]
     public class Conversions
     {
-        private readonly CurrentObjectContext _currentObjectContext;
-
-        public Conversions(CurrentObjectContext currentObjectContext)
-        {
-            _currentObjectContext = currentObjectContext;
-        }
-
         // DATE
 
         [StepArgumentTransformation("today")]
@@ -52,19 +43,21 @@ namespace BddWithSpecFlow.GeekPizza.Specs.Support
         [StepArgumentTransformation(@"(\d+)(am|pm)")]
         public TimeSpan ConvertTimeSpanAmPm(int hours, string ampm)
         {
-            if (ampm == "pm" && hours < 12) hours += 12;
-            if (ampm == "am" && hours == 12) hours -= 12;
+            if (ampm == "pm" && hours < 12) hours = hours + 12;
+            if (ampm == "am" && hours == 12) hours = hours - 12;
             return new TimeSpan(hours, 0, 0);
         }
 
-        // MENU ITEM
-
-        [StepArgumentTransformation(@"menu item \#(\d+)")]
-        public PizzaMenuItem ConvertTestMenuItem(int testId)
+        [StepArgumentTransformation(@"(?!earliest)(.*)")]
+        public TimeSpan? ConvertTimeToOptional(TimeSpan timeSpan)
         {
-            var menuItem = _currentObjectContext.MenuItems[testId];
-            Assert.IsNotNull(menuItem, $"Unable to find test menu item #{testId}");
-            return menuItem;
+            return timeSpan;
+        }
+
+        [StepArgumentTransformation(@"earliest")]
+        public TimeSpan? ConvertDefaultTime()
+        {
+            return null;
         }
     }
 }
